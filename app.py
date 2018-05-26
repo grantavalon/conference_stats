@@ -4,7 +4,8 @@ import dash_html_components as html
 import pandas as pd
 import plotly.graph_objs as go
 
-app = dash.Dash()
+app = dash.Dash(__name__)
+server = app.server
 
 df = pd.read_csv('player_dataset.csv', index_col=0)
 df = df[df.Season != 'Career']
@@ -69,6 +70,6 @@ def update_graph(years, statistic):
 
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
 
 
